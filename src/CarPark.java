@@ -59,7 +59,7 @@ public class CarPark {
      * @param registrationNumber the registration number of the car to remove
      * @return the removed car, or null if not found
      */
-    public Car removeCarByRegisteration(String registrationNumber) {
+    public Car removeCarByRegistration(String registrationNumber) {
         for (ParkingSlot slot: slots) {
             Car car = slot.getParkedCar();
             if(car != null && car.getRegistrationNumber().equals(registrationNumber)) {

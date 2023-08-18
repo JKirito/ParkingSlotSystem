@@ -2,7 +2,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Represents a car with specific attributes such as registration number, make, model, and year of manufacturing.
+ *  Represents a car with specific attributes such as registration number, make, model, and year of manufacturing.
+ *  @author Arpit Singh 104167158
+ *  @since 2023/08/18
+ *  @version 1.0
  */
 public class Car {
     // Car's registration number

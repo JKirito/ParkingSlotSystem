@@ -1,7 +1,11 @@
 import java.util.List;
 
 /**
- * Controller Class Handles all the business logic for the application
+ * Controller Class Handles all the business logic for the application.
+ * Acts as a layer between the Application Class and the other Classes
+ * @author Arpit Singh 104167158
+ * @since 2023/08/18
+ * @version 1.0
  */
 public class Controller {
     private CarPark carPark;

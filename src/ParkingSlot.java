@@ -1,8 +1,10 @@
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 /**
- * Represents a parking slot with a unique identifier and the ability to hold a car.
+ *  Represents a parking slot with a unique identifier and the ability to hold a car.
+ *  @author Arpit Singh 104167158
+ *  @since 2023/08/18
+ *  @version 1.0
  */
 public class ParkingSlot {
 

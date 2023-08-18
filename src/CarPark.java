@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents a car park responsible for maintaining and managing parking slots.
+ *  Represents a car park responsible for maintaining and managing available parking slots.
+ *  @author Arpit Singh 104167158
+ *  @since 2023/08/18
+ *  @version 1.0
  */
 public class CarPark {
     // List of parking slots in the car park.

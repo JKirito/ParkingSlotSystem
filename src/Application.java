@@ -1,5 +1,11 @@
 import java.util.Scanner;
 
+/**
+ * The Application Class provides all the Console (Text Based) Interface class including the main() method and handling all inputs and outputs
+ * @author Arpit Singh 104167158
+ * @since 2023/08/18
+ * @version 1.0
+ */
 public class Application {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

@@ -1,3 +1,6 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Represents a parking slot with a unique identifier and the ability to hold a car.
  */
@@ -21,6 +24,7 @@ public class ParkingSlot {
         }
         this.identifier = identifier;
         this.parkedCar = null;
+        System.out.println("A new Parking slot has been added with identifier="+identifier);
     }
 
     /**
@@ -44,7 +48,13 @@ public class ParkingSlot {
         if (parkedCar != null) {
             throw new IllegalStateException("Parking slot is already occupied");
         }
+        if (car.isParked()) {
+            throw new IllegalStateException("Car is Already Parked. Please remove the car to park again.");
+        }
         parkedCar = car;
+        LocalDateTime time = LocalDateTime.now();
+        car.setParkedTime(time);
+        System.out.println("The Car has been parked Successfully at "+ car.getFormattedDateTime());
     }
 
     /**
@@ -58,6 +68,7 @@ public class ParkingSlot {
             throw new IllegalStateException("Parking slot is empty");
         }
         Car removedCar = parkedCar;
+        removedCar.setParked(false);
         parkedCar = null;
         return removedCar;
     }

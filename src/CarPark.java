@@ -1,6 +1,7 @@
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Represents a car park responsible for maintaining and managing parking slots.
@@ -26,7 +27,31 @@ public class CarPark {
      * @param slot the parking slot to delete.
      */
     public void deleteSlot(ParkingSlot slot) {
-        slots.remove(slot);
+        if(!slot.isOccupied()) {
+            slots.remove(slot);
+            System.out.println("Parking slot "+ slot.getIdentifier() + " removed successfully");
+        } else {
+            System.out.println("Failed to remove parking slot "+ slot.getIdentifier());
+        }
+    }
+
+    /**
+     * Deleting a parking slot from the car park using the parking slot identifier
+     * @param identifier parking slot identifier to delete
+     */
+    public void deleteSlotByIdentifier(String identifier) {
+        boolean completed = false;
+        for (ParkingSlot slot: slots) {
+            if(slot.getIdentifier().equals(identifier) && !slot.isOccupied()) {
+                slots.remove(slot);
+                System.out.println("Parking slot "+ slot.getIdentifier() + " removed successfully");
+                completed = true;
+                break;
+            }
+        }
+        if(!completed) {
+            System.out.println("Failed to remove parking slot "+ identifier);
+        }
     }
 
     /**
@@ -38,6 +63,35 @@ public class CarPark {
     }
 
     /**
+     * Provides a list of registered parking slot identifiers
+     * @return  a list of registered parking slot identifiers
+     */
+    public Object[] getAllSlotsIdentifiers() {
+        List<String> identifiers = new ArrayList<>();
+        for (ParkingSlot slot: slots) {
+            identifiers.add(slot.getIdentifier());
+        }
+        return identifiers.toArray();
+    }
+
+    /**
+     * Provides all the Parking Slots information in a well formatted way
+     */
+    public void getAllSlotsInfo() {
+        for(ParkingSlot slot: slots) {
+            if(slot.isOccupied()) {
+                Car car = slot.getParkedCar();
+                LocalDateTime now = LocalDateTime.now();
+                LocalDateTime parkedTime = car.getParkedTime();
+                Duration duration = Duration.between(parkedTime,now);
+                System.out.println("SlotID "+slot.getIdentifier()+" is occupied with reg:"+car.getRegistrationNumber()+" ,make:- "+car.getMake()+", parking time:- "+duration.toHoursPart()+"hours "+duration.toMinutesPart()+"minutes "+duration.toSecondsPart()+"seconds");
+            } else {
+                System.out.println("SlotID "+slot.getIdentifier()+" is not occupied");
+            }
+        }
+    }
+
+    /**
      * Parks a car in the first available parking slot.
      *
      * @param car the car to park
@@ -45,8 +99,9 @@ public class CarPark {
      */
     public boolean parkCar(Car car) {
         for (ParkingSlot slot: slots) {
-            if(!slot.isOccupied()) {
+            if(!slot.isOccupied() && !car.isParked()) {
                 slot.parkCar(car);
+                car.setParked(true);
                 return true;
             }
         }
@@ -72,13 +127,46 @@ public class CarPark {
     /**
      * Finds cars by their make.
      *
-     * @param make the make to search for
-     * @return a list of cars with the specified make
+     * @param make the car's make to search for.
      */
-    public List<Car> findCarsByMake(String make) {
-        return slots.stream()
-                .map(ParkingSlot::getParkedCar)
-                .filter(car -> car != null && car.getMake().equals(make))
-                .collect(Collectors.toList());
+    public void findCarsByMake(String make) {
+//        List<Car> makeCars = new ArrayList<>();
+        boolean found = false;
+        for(ParkingSlot slot: slots) {
+            if(slot.getParkedCar() != null && slot.getParkedCar().getMake().equals(make)) {
+//                makeCars.add(slot.getParkedCar());
+                Car car = slot.getParkedCar();
+                LocalDateTime now = LocalDateTime.now();
+                LocalDateTime parkedTime = car.getParkedTime();
+                Duration duration = Duration.between(parkedTime,now);
+                System.out.println("SlotID "+slot.getIdentifier()+": reg="+car.getRegistrationNumber()+" ,"+car.getMake()+" ,"+car.getModel()+" ,"+car.getYear()+" , Parked time: "+duration.toHoursPart()+"hours "+duration.toMinutesPart()+"minutes "+duration.toSecondsPart()+"seconds");
+                found = true;
+            }
+        }
+        if(!found) {
+            System.out.println("The model ("+make+") is not found!");
+        }
     }
+
+    /**
+     * Retrieve the parked car and its parking slot number from the car park.
+     * @param registrationNumber car's registration number for searching the car park.
+     */
+    public void findCarByRegistrationNumber(String registrationNumber) {
+        boolean completed = false;
+        for (ParkingSlot slot: slots) {
+            if(slot != null && slot.getParkedCar() != null && slot.getParkedCar().getRegistrationNumber().equals(registrationNumber)) {
+                System.out.println("The car with reg="+slot.getParkedCar().getRegistrationNumber()+" is parked on the slot="+slot.getIdentifier());
+                completed = true;
+                break;
+            }
+        }
+        if(!completed) {
+            System.out.println("There is no car parked with reg="+registrationNumber);
+        }
+    }
+
+//    public void findCarsByMake(String make) {
+//
+//    }
 }

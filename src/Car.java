@@ -1,3 +1,6 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Represents a car with specific attributes such as registration number, make, model, and year of manufacturing.
  */
@@ -10,6 +13,11 @@ public class Car {
     private String model;
     // The year the car was manufactured
     private int year;
+
+    // The timestamp for storing the parking time.
+    private LocalDateTime parkedTime;
+
+    private boolean isParked;
 
     /**
      * Constructs a new instance of the Car class with the specified attributes.
@@ -24,7 +32,17 @@ public class Car {
         this.make = make;
         this.model = model;
         this.year = year;
+        this.isParked = false;
     }
+
+//    /**
+//     * Override toString for better representation of the Car Class
+//     * @return string describing the details of the car object
+//     */
+//    @Override
+//    public String toString() {
+//        return "Registration Number:- "+this.registrationNumber+" Make:- "+this.make+" Model:- "+this.model+" Year:- "+this.year;
+//    }
 
     /**
      * Gets the registration of the car
@@ -95,6 +113,43 @@ public class Car {
      public void setYear(int year) {
         this.year = year;
      }
+
+    /**
+     * Getter for isParked.
+     * @return if the car is parked.
+     */
+    public boolean isParked() {
+        return isParked;
+    }
+
+    /**
+     * sets the isParked Flag of the car.
+     * @param parked set the isParked flag of the car.
+     */
+    public void setParked(boolean parked) {
+        isParked = parked;
+    }
+
+    /**
+     * Gets the timestamp of the parking time.
+     * @return the time when the car was parked.
+     */
+    public LocalDateTime getParkedTime() {
+        return parkedTime;
+    }
+
+    /**
+     * Sets the timestamp of the parking time.
+     * @param parkedTime timestamp to store in the car object.
+     */
+    public void setParkedTime(LocalDateTime parkedTime) {
+        this.parkedTime = parkedTime;
+    }
+
+    public String getFormattedDateTime() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return parkedTime.format(formatter);
+    }
 
     /**
      * Checks if the Registration number provided is in valid format or not.

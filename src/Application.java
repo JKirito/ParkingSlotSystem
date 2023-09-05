@@ -8,10 +8,14 @@ import java.util.Scanner;
  */
 public class Application {
     public static void main(String[] args) {
+        // Scanner to scan input from System Input Stream for the program
         Scanner scanner = new Scanner(System.in);
+        // Instantiating a new Car Park
         CarPark carPark = new CarPark();
+        // Instantiating a controller to work on a specific car park created above.
         Controller controller = new Controller(carPark);
 
+        // User Input from the Menu
         int input;
         do {
             System.out.println("Please select an option (1-7):");
@@ -30,6 +34,7 @@ public class Application {
             String registrationNumber,model,make;
             int year;
 
+            // Switch statement for handling different tasks on different input from the menu
             switch (input) {
                 case 1:
                     System.out.println("Please enter the slot ID (e.g., A001):");
@@ -73,6 +78,7 @@ public class Application {
                     controller.findCarsByMake(make);
                     break;
                 case 8:
+                    // Exit the Program
                     System.out.println("Program end!");
                     System.exit(0);
                 default:

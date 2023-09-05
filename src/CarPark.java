@@ -81,6 +81,9 @@ public class CarPark {
      * Provides all the Parking Slots information in a well formatted way
      */
     public void getAllSlotsInfo() {
+        if(slots.isEmpty()) {
+            System.out.println("There are no Slots in the Car Park to display. Please add some.");
+        }
         for(ParkingSlot slot: slots) {
             if(slot.isOccupied()) {
                 Car car = slot.getParkedCar();

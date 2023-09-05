@@ -2,13 +2,15 @@ import java.util.List;
 
 /**
  * Controller Class Handles all the business logic for the application.
- * Acts as a layer between the Application Class and the other Classes
+ * Acts as a layer between the Application Class and the other Classes.
+ * Main Purpose of this class is to simplify calling the methods created in the other classes like,
+ * CarPark, ParkingSlot, Car.
  * @author Arpit Singh 104167158
  * @since 2023/08/18
  * @version 1.0
  */
 public class Controller {
-    private CarPark carPark;
+    private final CarPark carPark;
 
     /**
      * Construct a new Instance of the Controller Class with the specified carPark.
@@ -18,6 +20,10 @@ public class Controller {
         this.carPark = carPark;
     }
 
+    /**
+     * Adding a Car Slot to the Car Park
+     * @param slot identifier for the slot
+     */
     public void addACarSlot(String slot) {
         try {
             ParkingSlot newSlot = new ParkingSlot(slot);
@@ -27,10 +33,17 @@ public class Controller {
         }
     }
 
+    /**
+     * Method to delete a Car Slot by the slot identifier
+     * @param slot identifier to delete.
+     */
     public void deleteACarSlot(String slot) {
         carPark.deleteSlotByIdentifier(slot);
     }
 
+    /**
+     * list all the Information about the car slots
+     */
     public void listAllCarSlots() {
         carPark.getAllSlotsInfo();
     }
@@ -47,7 +60,7 @@ public class Controller {
         Car car = new Car(registrationNumber,make,model,year);
         List<ParkingSlot> allSlots = carPark.getAllSlots();
         boolean alreadyParked = false;
-        // Cheking if the Car is Already parked at a parking slot
+        // Checking if the Car is Already parked at a parking slot
         for (ParkingSlot slot: allSlots) {
             if(slot.getParkedCar() != null  && slot.getParkedCar().getRegistrationNumber().equals(registrationNumber)){
                 alreadyParked = true;
@@ -93,7 +106,7 @@ public class Controller {
      */
     public void removeCarByRegistration(String registrationNumber) {
         try {
-            Car car = carPark.removeCarByRegistration(registrationNumber);
+            carPark.removeCarByRegistration(registrationNumber);
             System.out.println("The Car with reg="+registrationNumber+" has been successfully removed");
         } catch (IllegalStateException e) {
             System.out.println(e.getMessage());

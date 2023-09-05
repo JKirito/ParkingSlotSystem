@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class ParkingSlot {
 
     // Unique identifier for the parking slot, e.g., "D001","E127".
-    private  String identifier;
+    private final String identifier;
 
     // Car parked in the slot; null if no car is parked
     private Car parkedCar;

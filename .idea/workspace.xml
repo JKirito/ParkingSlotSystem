@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="277d4ade-a6ff-45af-b021-029506601989" name="Changes" comment="Fixed some bugs that needs to be correct for parking car">
+    <list default="true" id="277d4ade-a6ff-45af-b021-029506601989" name="Changes" comment="Minor changes and added a bit of documentation.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Car.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CarPark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarPark.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParkingSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParkingSlot.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +35,7 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: -1
+  &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2U44EoAm6TPa9QLtSA5uU7zv5HQ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -113,19 +110,39 @@
       <option name="project" value="LOCAL" />
       <updated>1692360755090</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Minor changes and added a bit of documentation.">
+      <option name="closed" value="true" />
+      <created>1692363768647</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1692363768647</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="UnknownFeatures">
     <option featureType="dependencySupport" implementationName="executable:docker" />
     <option featureType="dependencySupport" implementationName="executable:kubectl" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Basic Project Setup" />
     <MESSAGE value="Worked on the basic Structure of the classes with their documentations done." />
     <MESSAGE value="Fixed Some Basic Mistakes and spellings" />
     <MESSAGE value="Fixed some bugs that needs to be correct for parking car" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some bugs that needs to be correct for parking car" />
+    <MESSAGE value="Minor changes and added a bit of documentation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor changes and added a bit of documentation." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
